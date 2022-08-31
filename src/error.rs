@@ -67,6 +67,24 @@ macro_rules! impl_simple_error {
         }
     };
 }
+
+#[macro_export(local_inner_macros)]
+macro_rules! impl_simple_error_outside {
+    ($n:ident, $t:ident) => {
+        pub struct $n($t);
+        impl From<$n> for SimpleError {
+            fn from(err: $n) -> Self {
+                SimpleError::send_error(err.0)
+            }
+        }
+        impl From<$t> for $n {
+            fn from(err: $t) -> Self {
+                $n(err)
+            }
+        }
+    };
+}
+
 impl From<AnyError> for SimpleError {
     fn from(err: AnyError) -> Self {
         let err = err.as_ref();

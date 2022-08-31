@@ -10,3 +10,8 @@ pub use response::{HeaderJson, HeaderResponse, SimpleJson, SimpleResponse, Simpl
 
 mod realip;
 pub use realip::RealIP;
+
+#[cfg(feature = "kv")]
+mod kv;
+#[cfg(feature = "kv")]
+pub use kv::{KVFilesystem, KVManager, KVRedis, KVTrait};
