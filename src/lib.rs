@@ -14,4 +14,4 @@ pub use realip::RealIP;
 #[cfg(feature = "kv")]
 mod kv;
 #[cfg(feature = "kv")]
-pub use kv::{KVFilesystem, KVManager, KVRedis, KVTrait};
+pub use kv::{KVFilesystem, KVManager, KVRedis, KVTrait, KvGetOrInitResult};
